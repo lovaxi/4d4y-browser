@@ -27,17 +27,7 @@ DSH(DeepSeek Harness)常驻插件——4D4Y 论坛专属浏览器。在 GUI 内�
 
 DSH 的 AI 会自行完成:克隆源码 → 放入 `profiles\node_modules` → 注册到 `cordis.patch.yml` → 提示你重启。重启后即可使用。
 
-### 方式二:一键安装脚本
-
-下载 `install.ps1`(或克隆仓库后进入目录),运行:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File install.ps1
-```
-
-脚本自动完成克隆、放置、注册(幂等,可重复执行用于更新),最后提示重启 dsh。
-
-### 方式三:手动安装
+### 方式二:手动安装
 
 1. **获取代码**:
 
@@ -51,7 +41,6 @@ git clone https://github.com/lovaxi/4d4y-browser
 ```
 C:\Users\<用户名>\.dsh\profiles\node_modules\4d4y-browser\
 ├── package.json
-├── install.ps1
 └── lib\
     ├── index.js      # Host 半(抓取/解析/登录/发帖/图片上传)
     └── client.js     # 浏览器 UI
@@ -77,7 +66,7 @@ C:\Users\<用户名>\.dsh\profiles\node_modules\4d4y-browser\
 cd 4d4y-browser && git pull
 ```
 
-然后重启 dsh 即可(方式二重复运行 install.ps1 也会自动 pull)。
+然后重启 dsh 即可。
 
 ## 使用
 
@@ -88,13 +77,13 @@ cd 4d4y-browser && git pull
 ## 技术要点
 
 - **抓取**:`curl`(带浏览器 UA)抓取 Discuz 页面,`TextDecoder('gbk')` 流式解码,正则解析为结构化 JSON
-- **发帖编码**:站点为 GBK,中文标题/内容经 PowerShell 精确转 GBK 后以 multipart 提交,避免乱码
+- **发帖编码**:站点为 GBK,中文标题/内容按平台(Windows PowerShell / Linux·macOS iconv)精确转 GBK 后以 multipart 提交,避免乱码
 - **图片上传**:逐张调用站点 `misc.php?action=swfupload&operation=upload` 获取附件 ID,发帖时以 `attachnew[aid][description]` 标记并插入 `[attachimg]aid[/attachimg]` 正文标签
 - **安全**:仅请求 4d4y.com 域名;密码不在命令行/日志出现;临时文件随用随删
 
 ## 版本
 
-当前 **v0.5**(版本策略:从 0.1 起步小步递增,功能全部完成定格 1.0)
+当前 **v0.6**(版本策略:从 0.1 起步小步递增,功能全部完成定格 1.0)
 
 ## License
 
