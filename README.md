@@ -17,6 +17,28 @@ DSH(DeepSeek Harness)常驻插件——4D4Y 论坛专属浏览器。在 GUI 内�
 
 > **平台要求**:本插件依赖 Windows 的 `curl.exe`(抓取)与 `Windows PowerShell`(GBK 转码),因此目前面向 **Windows + DSH** 环境。DSH(GUI 默认 http://127.0.0.1:3080)需已安装运行,且本机可访问 https://www.4d4y.com/。
 
+### 方式一:在 DSH 对话框里直接说(最简单)
+
+在任意 DSH 会话中输入:
+
+```
+安装 https://github.com/lovaxi/4d4y-browser 插件
+```
+
+DSH 的 AI 会自行完成:克隆源码 → 放入 `profiles\node_modules` → 注册到 `cordis.patch.yml` → 提示你重启。重启后即可使用。
+
+### 方式二:一键安装脚本
+
+下载 `install.ps1`(或克隆仓库后进入目录),运行:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File install.ps1
+```
+
+脚本自动完成克隆、放置、注册(幂等,可重复执行用于更新),最后提示重启 dsh。
+
+### 方式三:手动安装
+
 1. **获取代码**:
 
 ```bash
@@ -29,9 +51,10 @@ git clone https://github.com/lovaxi/4d4y-browser
 ```
 C:\Users\<用户名>\.dsh\profiles\node_modules\4d4y-browser\
 ├── package.json
-├── lib\
-│   ├── index.js      # Host 半(抓取/解析/登录/发帖/图片上传)
-│   └── client.js     # 浏览器 UI
+├── install.ps1
+└── lib\
+    ├── index.js      # Host 半(抓取/解析/登录/发帖/图片上传)
+    └── client.js     # 浏览器 UI
 ```
 
 3. **注册插件**:编辑 `<DSH_HOME>\profiles\web\cordis.patch.yml`,在 `- insert:` 列表中加入一行:
@@ -54,7 +77,7 @@ C:\Users\<用户名>\.dsh\profiles\node_modules\4d4y-browser\
 cd 4d4y-browser && git pull
 ```
 
-然后重启 dsh 即可。
+然后重启 dsh 即可(方式二重复运行 install.ps1 也会自动 pull)。
 
 ## 使用
 
