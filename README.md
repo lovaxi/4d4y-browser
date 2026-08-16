@@ -15,7 +15,7 @@ DSH(DeepSeek Harness)常驻插件——4D4Y 论坛专属浏览器。在 GUI 内�
 
 ## 安装
 
-> **平台要求**:本插件依赖 Windows 的 `curl.exe`(抓取)与 `Windows PowerShell`(GBK 转码),因此目前面向 **Windows + DSH** 环境。DSH(GUI 默认 http://127.0.0.1:3080)需已安装运行,且本机可访问 https://www.4d4y.com/。
+> **平台要求**:**Windows / Linux / macOS** 均可。依赖系统自带的 `curl`(抓取)与 GBK 转码能力:Windows 用自带 PowerShell,Linux/macOS 用系统自带 `iconv`(glibc / macOS 均内置)。DSH(GUI 默认 http://127.0.0.1:3080)需已安装运行,且本机可访问 https://www.4d4y.com/。
 
 ### 方式一:在 DSH 对话框里直接说(最简单)
 

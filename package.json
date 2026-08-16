@@ -1,6 +1,6 @@
 {
   "name": "4d4y-browser",
-  "version": "0.5",
+  "version": "0.6",
   "description": "Permanent 4D4Y forum browser: fetches the real Discuz 7.2 interfaces (index / forumdisplay / viewthread), decodes GBK, parses, and renders a browser panel beside the sidebar with a sidebar entry button.",
   "type": "module",
   "main": "lib/index.js",
