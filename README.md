@@ -17,56 +17,15 @@ DSH(DeepSeek Harness)常驻插件——4D4Y 论坛专属浏览器。在 GUI 内�
 
 > **平台要求**:**Windows / Linux / macOS** 均可。依赖系统自带的 `curl`(抓取)与 GBK 转码能力:Windows 用自带 PowerShell,Linux/macOS 用系统自带 `iconv`(glibc / macOS 均内置)。DSH(GUI 默认 http://127.0.0.1:3080)需已安装运行,且本机可访问 https://www.4d4y.com/。
 
-### 方式一:在 DSH 对话框里直接说(最简单)
-
 在任意 DSH 会话中输入:
 
 ```
 安装 https://github.com/lovaxi/4d4y-browser 插件
 ```
 
-DSH 的 AI 会自行完成:克隆源码 → 放入 `profiles\node_modules` → 注册到 `cordis.patch.yml` → 提示你重启。重启后即可使用。
+DSH 的 AI 会自行完成:克隆源码 → 放入 `profiles\node_modules` → 注册到 `cordis.patch.yml` → 提示你重启。
 
-### 方式二:手动安装
-
-1. **获取代码**:
-
-```bash
-git clone https://github.com/lovaxi/4d4y-browser
-# 或:GitHub 页面 Code → Download ZIP 并解压
-```
-
-2. **放置插件**:将 `4d4y-browser` 目录复制到 DSH profile 的插件目录(DSH_HOME 默认 `C:\Users\<用户名>\.dsh`):
-
-```
-C:\Users\<用户名>\.dsh\profiles\node_modules\4d4y-browser\
-├── package.json
-└── lib\
-    ├── index.js      # Host 半(抓取/解析/登录/发帖/图片上传)
-    └── client.js     # 浏览器 UI
-```
-
-3. **注册插件**:编辑 `<DSH_HOME>\profiles\web\cordis.patch.yml`,在 `- insert:` 列表中加入一行:
-
-```yaml
-- insert:
-    - id: ediff-panel
-      name: ediff-panel
-    - id: 4d4y-browser
-      name: 4d4y-browser
-```
-
-4. **重启 dsh**(静态插件在启动时加载)。重启后左侧边栏底部会出现「4D4Y」按钮,点击打开浏览器面板。
-
-5. **登录使用**:首次使用点「登录」输入你自己的 4D4Y 账号(密码仅按官方流程加密提交,不保存;cookie 保存在本地 `~/.dsh/4d4y-cookies.txt`)。
-
-### 更新插件
-
-```bash
-cd 4d4y-browser && git pull
-```
-
-然后重启 dsh 即可。
+重启后:左侧边栏底部出现「4D4Y」按钮 → 打开面板 → 点「登录」输入你自己的 4D4Y 账号(密码仅按官方流程加密提交,不保存;cookie 保存在本地 `~/.dsh/4d4y-cookies.txt`)。
 
 ## 使用
 
